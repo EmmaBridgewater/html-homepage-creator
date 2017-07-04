@@ -1,0 +1,127 @@
+body, html {
+	padding: 0;
+	margin: 0;
+	background: #F9FBFE;
+	color: black;
+	overflow: scroll;
+	font-family: "Gill Sans MT", sans-serif;
+}
+.hcContainer { 
+	margin: 20px auto;
+	width: 90%;
+	max-width: 700px;
+	background: white;
+	border-radius: 10px;
+	box-sizing: border-box;
+	box-shadow: 0 0 100px rgba(0,0,0,0.1);
+	overflow: hidden;
+	h1 {
+		text-align: center;
+		color: snow;
+		background: #819DC0;
+		text-transform: uppercase;
+		letter-spacing: 6px;
+		font-weight: normal;
+		padding: 0.6em;
+		margin: 0;
+		user-select: none;
+		cursor: default;
+	}
+	.hcContentContainer { 
+		padding: 0 25px;	
+		h2, h3 {
+			margin: 0.3em 0;
+			position: relative;
+			font-weight: normal;
+			user-select: none;
+			cursor: default;
+		}
+		h2 {
+			border-top: 1px solid lightgrey;
+			padding-top: 12px;
+			margin-bottom: 0em;
+			cursor: pointer;
+			+ div {
+				height: 0;
+				width: 100%;
+				overflow: hidden;
+				transition: 0.2s;
+			}
+			> span.headerArrow {
+				float: left;
+				margin-right: 5px;
+				color: lightsteelblue;
+				transition: 0.1s;
+			}
+			.headerExpanded {
+				+ div {
+					height: 520px;
+				}
+				> span.headerArrow {
+					transform: rotate(90deg);
+				}
+			}
+		}
+		.hcSectionContainer {
+			margin-top: 20px;
+			+ hr {
+				margin: 30px 0;
+				border: none;
+				border-top: medium double lightgrey;
+			}
+			.hcFilters {
+				margin-left: 10px;
+				display: inline-block;
+				float: right;
+				label {
+					height: 27px;
+					width: 27px;
+					line-height: 27px;
+					margin: 0 2px;
+					text-align: center;
+					color: snow;
+					background: lightsteelblue;
+					border-radius: 50%;
+					display: inline-block;
+					user-select: none;
+					cursor: pointer;
+					position: relative;
+				}
+				input[type="checkbox"] {
+					display: none;
+				}
+				input[type="checkbox"] + span {
+					text-transform: uppercase;
+					font-size: 0.55em;
+					position: absolute;
+					width: 100%;
+					left: 0;
+				}
+				.filterSelected {
+					background: crimson;
+				}
+			}
+		}
+	}
+	#hcSubmit {
+		margin-top: 30px;
+		width: 100%;
+		border: 0;
+		font-size: 2em;
+		text-align: center;
+		color: snow;
+		background: crimson;
+		text-transform: uppercase;
+		letter-spacing: 6px;
+		font-weight: normal;
+		padding: 0.6em;
+		user-select: none;
+		cursor: default;
+		&:hover {
+			background: #AD0728;
+		}
+		&:active {
+			background: #88001B;
+		}
+	}
+}

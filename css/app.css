@@ -1,0 +1,108 @@
+body, html {
+  padding: 0;
+  margin: 0;
+  background: #F9FBFE;
+  color: black;
+  overflow: scroll;
+  font-family: "Gill Sans MT", sans-serif; }
+
+.hcContainer {
+  margin: 20px auto;
+  width: 90%;
+  max-width: 700px;
+  background: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+  overflow: hidden; }
+  .hcContainer h1 {
+    text-align: center;
+    color: snow;
+    background: #819DC0;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    font-weight: normal;
+    padding: 0.6em;
+    margin: 0;
+    user-select: none;
+    cursor: default; }
+  .hcContainer .hcContentContainer {
+    padding: 0 25px; }
+    .hcContainer .hcContentContainer h2, .hcContainer .hcContentContainer h3 {
+      margin: 0.3em 0;
+      position: relative;
+      font-weight: normal;
+      user-select: none;
+      cursor: default; }
+    .hcContainer .hcContentContainer h2 {
+      border-top: 1px solid lightgrey;
+      padding-top: 12px;
+      margin-bottom: 0em;
+      cursor: pointer; }
+      .hcContainer .hcContentContainer h2 + div {
+        height: 0;
+        width: 100%;
+        overflow: hidden;
+        transition: 0.2s; }
+      .hcContainer .hcContentContainer h2 > span.headerArrow {
+        float: left;
+        margin-right: 5px;
+        color: lightsteelblue;
+        transition: 0.1s; }
+      .hcContainer .hcContentContainer h2 .headerExpanded + div {
+        height: 520px; }
+      .hcContainer .hcContentContainer h2 .headerExpanded > span.headerArrow {
+        transform: rotate(90deg); }
+    .hcContainer .hcContentContainer .hcSectionContainer {
+      margin-top: 20px; }
+      .hcContainer .hcContentContainer .hcSectionContainer + hr {
+        margin: 30px 0;
+        border: none;
+        border-top: medium double lightgrey; }
+      .hcContainer .hcContentContainer .hcSectionContainer .hcFilters {
+        margin-left: 10px;
+        display: inline-block;
+        float: right; }
+        .hcContainer .hcContentContainer .hcSectionContainer .hcFilters label {
+          height: 27px;
+          width: 27px;
+          line-height: 27px;
+          margin: 0 2px;
+          text-align: center;
+          color: snow;
+          background: lightsteelblue;
+          border-radius: 50%;
+          display: inline-block;
+          user-select: none;
+          cursor: pointer;
+          position: relative; }
+        .hcContainer .hcContentContainer .hcSectionContainer .hcFilters input[type="checkbox"] {
+          display: none; }
+        .hcContainer .hcContentContainer .hcSectionContainer .hcFilters input[type="checkbox"] + span {
+          text-transform: uppercase;
+          font-size: 0.55em;
+          position: absolute;
+          width: 100%;
+          left: 0; }
+        .hcContainer .hcContentContainer .hcSectionContainer .hcFilters .filterSelected {
+          background: crimson; }
+  .hcContainer #hcSubmit {
+    margin-top: 30px;
+    width: 100%;
+    border: 0;
+    font-size: 2em;
+    text-align: center;
+    color: snow;
+    background: crimson;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    font-weight: normal;
+    padding: 0.6em;
+    user-select: none;
+    cursor: default; }
+    .hcContainer #hcSubmit:hover {
+      background: #AD0728; }
+    .hcContainer #hcSubmit:active {
+      background: #88001B; }
+
+/*# sourceMappingURL=app.css.map */
