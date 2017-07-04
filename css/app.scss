@@ -1,9 +1,10 @@
 body, html {
 	padding: 0;
 	margin: 0;
+	height: 100%;
+	width: 100%;
 	background: #F9FBFE;
 	color: black;
-	overflow: scroll;
 	font-family: "Gill Sans MT", sans-serif;
 }
 .hcContainer { 
@@ -53,13 +54,13 @@ body, html {
 				color: lightsteelblue;
 				transition: 0.1s;
 			}
-			.headerExpanded {
-				+ div {
-					height: 520px;
-				}
-				> span.headerArrow {
-					transform: rotate(90deg);
-				}
+		}
+		.headerExpanded {
+			+ div {
+				height: 520px;
+			}
+			> span.headerArrow {
+				transform: rotate(90deg);
 			}
 		}
 		.hcSectionContainer {
@@ -99,6 +100,33 @@ body, html {
 				}
 				.filterSelected {
 					background: crimson;
+				}
+			}
+			.hcInputs {
+				margin-bottom: 10px;
+				.hcInputWrapper {
+					height: 30px;
+					width: 100%;
+					margin-bottom: 5px;
+					i {
+						width: 5%;
+						height: 100%;
+						text-align: center;
+						float: left;
+						&::before {
+							display: inline-block;
+							margin-top: 7px;
+						}
+					}
+					input[type="text"] {
+						width: 95%;
+						height: 100%;
+						border: 1px solid lightgrey;
+						box-sizing: border-box;
+						padding: 5px;
+						outline: none;
+						float: left;
+					}
 				}
 			}
 		}

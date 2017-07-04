@@ -1,9 +1,10 @@
 body, html {
   padding: 0;
   margin: 0;
+  height: 100%;
+  width: 100%;
   background: #F9FBFE;
   color: black;
-  overflow: scroll;
   font-family: "Gill Sans MT", sans-serif; }
 
 .hcContainer {
@@ -49,10 +50,10 @@ body, html {
         margin-right: 5px;
         color: lightsteelblue;
         transition: 0.1s; }
-      .hcContainer .hcContentContainer h2 .headerExpanded + div {
-        height: 520px; }
-      .hcContainer .hcContentContainer h2 .headerExpanded > span.headerArrow {
-        transform: rotate(90deg); }
+    .hcContainer .hcContentContainer .headerExpanded + div {
+      height: 520px; }
+    .hcContainer .hcContentContainer .headerExpanded > span.headerArrow {
+      transform: rotate(90deg); }
     .hcContainer .hcContentContainer .hcSectionContainer {
       margin-top: 20px; }
       .hcContainer .hcContentContainer .hcSectionContainer + hr {
@@ -86,6 +87,28 @@ body, html {
           left: 0; }
         .hcContainer .hcContentContainer .hcSectionContainer .hcFilters .filterSelected {
           background: crimson; }
+      .hcContainer .hcContentContainer .hcSectionContainer .hcInputs {
+        margin-bottom: 10px; }
+        .hcContainer .hcContentContainer .hcSectionContainer .hcInputs .hcInputWrapper {
+          height: 30px;
+          width: 100%;
+          margin-bottom: 5px; }
+          .hcContainer .hcContentContainer .hcSectionContainer .hcInputs .hcInputWrapper i {
+            width: 5%;
+            height: 100%;
+            text-align: center;
+            float: left; }
+            .hcContainer .hcContentContainer .hcSectionContainer .hcInputs .hcInputWrapper i::before {
+              display: inline-block;
+              margin-top: 7px; }
+          .hcContainer .hcContentContainer .hcSectionContainer .hcInputs .hcInputWrapper input[type="text"] {
+            width: 95%;
+            height: 100%;
+            border: 1px solid lightgrey;
+            box-sizing: border-box;
+            padding: 5px;
+            outline: none;
+            float: left; }
   .hcContainer #hcSubmit {
     margin-top: 30px;
     width: 100%;
