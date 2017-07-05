@@ -1,7 +1,7 @@
-body, html {
+body {
 	padding: 0;
 	margin: 0;
-	background: #F9FBFE;
+	background: aliceblue;
 	color: black;
 	font-family: "Gill Sans MT", sans-serif;
 }
@@ -14,17 +14,19 @@ body, html {
 	box-sizing: border-box;
 	box-shadow: 0 0 100px rgba(0,0,0,0.1);
 	overflow: hidden;
-	h1 {
+	h1, input[type="button"] {
 		text-align: center;
 		color: snow;
-		background: #819DC0;
 		text-transform: uppercase;
 		letter-spacing: 6px;
 		font-weight: normal;
 		padding: 0.6em;
+	}
+	h1 {
 		margin: 0;
-		user-select: none;
+		background: slategrey;
 		cursor: default;
+		user-select: none;
 	}
 	.hcContentContainer { 
 		padding: 0 25px;	
@@ -49,7 +51,7 @@ body, html {
 			> span.headerArrow {
 				float: left;
 				margin-right: 5px;
-				color: lightsteelblue;
+				color: slategrey;
 				transition: 0.1s;
 			}
 		}
@@ -79,12 +81,13 @@ body, html {
 					margin: 0 2px;
 					text-align: center;
 					color: snow;
-					background: lightsteelblue;
+					background: lightgrey;
 					border-radius: 50%;
 					display: inline-block;
 					user-select: none;
 					cursor: pointer;
 					position: relative;
+					transition: 0.1s all;
 				}
 				input[type="checkbox"] {
 					display: none;
@@ -115,10 +118,6 @@ body, html {
 						float: left;
 						user-select: none;
 						cursor: default;
-						&::before {
-							display: inline-block;
-							margin-top: 7px;
-						}
 					}
 					input[type="text"] {
 						width: 95%;
@@ -138,15 +137,10 @@ body, html {
 		width: 100%;
 		border: 0;
 		font-size: 2em;
-		text-align: center;
-		color: snow;
 		background: crimson;
 		text-transform: uppercase;
-		letter-spacing: 6px;
-		font-weight: normal;
-		padding: 0.6em;
-		user-select: none;
 		cursor: pointer;
+		transition: 0.1s all;
 		&:hover {
 			background: #AD0728;
 		}

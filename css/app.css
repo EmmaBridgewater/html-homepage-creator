@@ -1,7 +1,7 @@
-body, html {
+body {
   padding: 0;
   margin: 0;
-  background: #F9FBFE;
+  background: aliceblue;
   color: black;
   font-family: "Gill Sans MT", sans-serif; }
 
@@ -14,17 +14,18 @@ body, html {
   box-sizing: border-box;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
   overflow: hidden; }
-  .hcContainer h1 {
+  .hcContainer h1, .hcContainer input[type="button"] {
     text-align: center;
     color: snow;
-    background: #819DC0;
     text-transform: uppercase;
     letter-spacing: 6px;
     font-weight: normal;
-    padding: 0.6em;
+    padding: 0.6em; }
+  .hcContainer h1 {
     margin: 0;
-    user-select: none;
-    cursor: default; }
+    background: slategrey;
+    cursor: default;
+    user-select: none; }
   .hcContainer .hcContentContainer {
     padding: 0 25px; }
     .hcContainer .hcContentContainer h2, .hcContainer .hcContentContainer h3 {
@@ -46,7 +47,7 @@ body, html {
       .hcContainer .hcContentContainer h2 > span.headerArrow {
         float: left;
         margin-right: 5px;
-        color: lightsteelblue;
+        color: slategrey;
         transition: 0.1s; }
     .hcContainer .hcContentContainer .headerExpanded + div {
       height: 520px; }
@@ -69,12 +70,13 @@ body, html {
           margin: 0 2px;
           text-align: center;
           color: snow;
-          background: lightsteelblue;
+          background: lightgrey;
           border-radius: 50%;
           display: inline-block;
           user-select: none;
           cursor: pointer;
-          position: relative; }
+          position: relative;
+          transition: 0.1s all; }
         .hcContainer .hcContentContainer .hcSectionContainer .hcFilters input[type="checkbox"] {
           display: none; }
         .hcContainer .hcContentContainer .hcSectionContainer .hcFilters input[type="checkbox"] + span {
@@ -100,9 +102,6 @@ body, html {
             float: left;
             user-select: none;
             cursor: default; }
-            .hcContainer .hcContentContainer .hcSectionContainer .hcInputs .hcInputWrapper i::before {
-              display: inline-block;
-              margin-top: 7px; }
           .hcContainer .hcContentContainer .hcSectionContainer .hcInputs .hcInputWrapper input[type="text"] {
             width: 95%;
             height: 100%;
@@ -116,15 +115,10 @@ body, html {
     width: 100%;
     border: 0;
     font-size: 2em;
-    text-align: center;
-    color: snow;
     background: crimson;
     text-transform: uppercase;
-    letter-spacing: 6px;
-    font-weight: normal;
-    padding: 0.6em;
-    user-select: none;
-    cursor: pointer; }
+    cursor: pointer;
+    transition: 0.1s all; }
     .hcContainer #hcSubmit:hover {
       background: #AD0728; }
     .hcContainer #hcSubmit:active {
