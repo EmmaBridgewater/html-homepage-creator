@@ -2,22 +2,22 @@ var users = ["g","c"];
 var currencies = ["gbp","eur","usd"];
 var inputs = [
 	{
-		icon: "desktop",
+		icon: "&#xE30C;",
 		name: "imgd",
 		placeholder: "Desktop Image (https://www...)"
 	},
 	{
-		icon: "mobile",
+		icon: "&#xE32C;",
 		name: "imgm",
 		placeholder: "Mobile Image (https://www...)"
 	},
 	{
-		icon: "link",
+		icon: "&#xE157;",
 		name: "link",
 		placeholder: "Link (https://www...)"
 	},
 	{
-		icon: "ellipsis-h",
+		icon: "&#xE262;",
 		name: "text",
 		placeholder: "Alt Text"
 	}
@@ -48,7 +48,7 @@ function createInputs(){
 	inputs.forEach(function(input) {
 		$inputContainer.append(
 			$('<div class="hcInputWrapper" />')
-			.append($('<i class="fa fa-'+input.icon+'" aria-hidden="true" />'))
+			.append($('<i class="material-icons">'+input.icon+'</i>'))
 			.append($('<input type="text" name="mod1-'+input.name+'-1" placeholder="'+input.placeholder+'">'))
 		)
 	})
