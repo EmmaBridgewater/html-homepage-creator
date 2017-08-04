@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>HTML Homepage Creator</title>
+	<title>Homepage HTML Generator</title>
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script type="text/javascript" src="https://jarodhargreav.es/backstamp-archive/js/external/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="js/htmlCreator.js"></script>
 </head>
 
 <body>
 	<div class="hcContainer">
-		<h1>HTML Homepage Creator</h1>
-			<div class="hcContentContainer">
-				<div class="hcSectionContainer">
-					<h2 class="headerExpanded" data-filter="g c gbp eur usd">Carousel</h2>
-				</div>
-				<hr>
-				<div class="hcSectionContainer">
-					<h2 class="headerExpanded" data-filter="g c gbp eur usd">Heroes</h2>
-				</div>
+		<h1>Homepage HTML Generator</h1>
+		<div class="hcContentContainer">
+			<div class="hcSectionContainer">
+				<h2 class="headerExpanded" data-filter="hp-collector hp-noncollector hp-gbp hp-eur hp-usd">Carousel</h2>
 			</div>
-			<div>
-				<input type="button" id="hcSubmit" value="CREATE">
-			</div>
+<!-- 			<hr>
+			<div class="hcSectionContainer">
+				<h2 class="headerExpanded" data-filter="hp-collector hp-noncollector hp-gbp hp-eur hp-usd">Heroes</h2>
+			</div> -->
+			
+		</div>
+		<div>
+			<input type="button" id="hcSubmit" value="GIVE IT TO ME">
+		</div>
+		<textarea id="htmlOutput"></textarea>
 	</div>
+
+
+	<script type="text/javascript" src="js/htmlCreator.js"></script>
 </body>
 </html>
