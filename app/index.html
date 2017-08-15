@@ -4,29 +4,71 @@
 	<title>Homepage HTML Generator</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/lib/vue.js"></script>
 </head>
 
 <body>
-	<div class="hcContainer">
+	<div class="container">
 		<h1>Homepage HTML Generator</h1>
 		<div class="hcContentContainer">
-			<div class="hcSectionContainer">
-				<h2 class="headerExpanded" data-filter="hp-collector hp-noncollector hp-gbp hp-eur hp-usd">Carousel</h2>
+			<div class="hcSectionContainer" v-for="(item, index) in mod1">
+				<h2 @click="expandHeader(item)" :class="{headerExpanded: item.headerExpanded}">
+					Carousel<span class="headerArrow">►</span>
+					<div class="hcFilters">
+						<label :class="{filterSelected: item.currency.gbp}">
+							<input type="checkbox" @click="selectFilter('currency', 'gbp', item)"><span>£</span>
+						</label>
+						<label :class="{filterSelected: item.currency.usd}">
+							<input type="checkbox" @click="selectFilter('currency', 'usd', item)"><span>$</span>
+						</label>
+						<label :class="{filterSelected: item.currency.eur}">
+							<input type="checkbox" @click="selectFilter('currency', 'eur', item)"><span>€</span>
+						</label>
+					</div>
+					<div class="hcFilters">
+						<label :class="{filterSelected: item.collector.noncollector}">
+							<input type="checkbox" @click="selectFilter('collector', 'noncollector', item)"><span>G</span>
+						</label>
+						<label :class="{filterSelected: item.collector.collector}">
+							<input type="checkbox" @click="selectFilter('collector', 'collector', item)"><span>C</span>
+						</label>
+					</div>
+				</h2>
+				<div>
+					<div v-for="(input, number) in mod1[index].content">
+						<h3>Image {{number + 1}}</h3>
+						<form class="hcInputs">
+							<div class="hcInputWrapper">
+								<i class="material-icons">&#xE30C;</i>
+								<input type="text" class="img-input" placeholder="Desktop Image (.jpg)" v-model="input.desktopImg">
+								<img class="img-output" :src="input.desktopImg" />
+							</div>
+							<div class="hcInputWrapper">
+								<i class="material-icons">&#xE32C;</i>
+								<input type="text" class="img-input" placeholder="Mobile Image (.jpg)" v-model="input.mobileImg">
+								<img class="img-output" :src="input.mobileImg" />
+							</div>
+							<div class="hcInputWrapper">
+								<i class="material-icons">&#xE157;</i>
+								<input type="text" placeholder="Link (https://www...)" v-model="input.link">
+
+							</div>
+							<div class="hcInputWrapper">
+								<i class="material-icons">&#xE262;</i>
+								<input type="text" placeholder="Alt Text" v-model="input.altText">
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
-<!-- 			<hr>
-			<div class="hcSectionContainer">
-				<h2 class="headerExpanded" data-filter="hp-collector hp-noncollector hp-gbp hp-eur hp-usd">Heroes</h2>
-			</div> -->
-			
 		</div>
 		<div>
-			<input type="button" id="hcSubmit" value="GIVE IT TO ME">
+			<input @click="returnHTML" type="button" id="hcSubmit" value="GIVE IT TO ME">
 		</div>
-		<textarea id="htmlOutput"></textarea>
+		<textarea id="htmlOutput" :class="{outputExpanded: outputExpanded}">{{output}}</textarea>
 	</div>
 
 
-	<script type="text/javascript" src="assets/js/app.js"></script>
+	<script type="text/javascript" src="assets/js/vueApp.js"></script>
 </body>
 </html>
