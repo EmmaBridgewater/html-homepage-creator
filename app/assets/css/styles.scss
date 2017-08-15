@@ -14,15 +14,16 @@ body {
 	box-sizing: border-box;
 }
 
-.hcContainer { 
+.container {
 	margin: 20px auto;
 	width: 90%;
 	max-width: 700px;
 	background: white;
 	border-radius: 10px;
-	box-shadow: 0 0 100px rgba(0,0,0,0.1);
+	box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
-	h1, input[type="button"] {
+	h1,
+	input[type="button"] {
 		margin: 0;
 		border: 0;
 		font-size: 1.5em;
@@ -40,9 +41,10 @@ body {
 	}
 }
 
-.hcContentContainer { 
-	padding: 0 25px;	
-	h2, h3 {
+.hcContentContainer {
+	padding: 0 25px;
+	h2,
+	h3 {
 		margin: 0.3em 0;
 		position: relative;
 		font-weight: normal;
@@ -84,7 +86,6 @@ body {
 		border: none;
 		border-top: medium double lightgrey;
 	}
-
 }
 
 .hcFilters {
@@ -124,6 +125,7 @@ body {
 .hcInputs {
 	margin-bottom: 10px;
 	.hcInputWrapper {
+		position: relative;
 		height: 30px;
 		width: 100%;
 		margin-bottom: 5px;
@@ -146,6 +148,21 @@ body {
 			&.blankInput {
 				background: $primary-color-t;
 			}
+			&:hover + .img-output {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+		.img-output {
+			position: absolute;
+			top: 100%;
+			right: 0;
+			max-width: 50%;
+			height: auto;
+			z-index: 100;
+			opacity: 0;
+			transition: 0.1s all;
+			visibility: hidden;
 		}
 	}
 }
@@ -167,10 +184,12 @@ body {
 	max-width: 100%;
 	border: none;
 	display: none;
+	visibility: hidden;
 	min-height: 0px;
 	transition: min-height 0.5s;
 	&.outputExpanded {
 		display: block;
+		visibility: visible;
 		min-height: 400px;
 	}
 }

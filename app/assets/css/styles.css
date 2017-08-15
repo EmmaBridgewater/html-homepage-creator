@@ -8,7 +8,7 @@ body {
 * {
   box-sizing: border-box; }
 
-.hcContainer {
+.container {
   margin: 20px auto;
   width: 90%;
   max-width: 700px;
@@ -16,7 +16,8 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
   overflow: hidden; }
-  .hcContainer h1, .hcContainer input[type="button"] {
+  .container h1,
+  .container input[type="button"] {
     margin: 0;
     border: 0;
     font-size: 1.5em;
@@ -26,14 +27,15 @@ body {
     letter-spacing: 6px;
     font-weight: normal;
     padding: 0.8em; }
-  .hcContainer h1 {
+  .container h1 {
     background: slategrey;
     cursor: default;
     user-select: none; }
 
 .hcContentContainer {
   padding: 0 25px; }
-  .hcContentContainer h2, .hcContentContainer h3 {
+  .hcContentContainer h2,
+  .hcContentContainer h3 {
     margin: 0.3em 0;
     position: relative;
     font-weight: normal;
@@ -98,6 +100,7 @@ body {
 .hcInputs {
   margin-bottom: 10px; }
   .hcInputs .hcInputWrapper {
+    position: relative;
     height: 30px;
     width: 100%;
     margin-bottom: 5px; }
@@ -118,6 +121,19 @@ body {
       float: left; }
       .hcInputs .hcInputWrapper input[type="text"].blankInput {
         background: rgba(237, 20, 61, 0.3); }
+      .hcInputs .hcInputWrapper input[type="text"]:hover + .img-output {
+        opacity: 1;
+        visibility: visible; }
+    .hcInputs .hcInputWrapper .img-output {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      max-width: 50%;
+      height: auto;
+      z-index: 100;
+      opacity: 0;
+      transition: 0.1s all;
+      visibility: hidden; }
 
 #hcSubmit {
   margin-top: 30px;
@@ -134,10 +150,12 @@ body {
   max-width: 100%;
   border: none;
   display: none;
+  visibility: hidden;
   min-height: 0px;
   transition: min-height 0.5s; }
   #htmlOutput.outputExpanded {
     display: block;
+    visibility: visible;
     min-height: 400px; }
 
-/*# sourceMappingURL=app.css.map */
+/*# sourceMappingURL=styles.css.map */
