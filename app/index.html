@@ -16,16 +16,16 @@
         <div class="hcContentContainer">
             <div class="content-container">
                 <h2 @click="expandHeader(mod1)" :class="{'header--expanded': mod1.headerExpanded}">
-                    Carousel<span class="header-arrow">►</span>
+                    Carousel<span class="header-arrow">&#x25ba;</span>
                     <div class="filters" @click.stop="expandHeader">
                         <label :class="{'filter--selected': mod1.currency.gbp}">
-                            <span @click="selectFilter('currency', 'gbp', mod1)">£</span>
+                        <span @click="selectFilter('currency', 'gbp', mod1)">&pound;</span>
                         </label>
                         <label :class="{'filter--selected': mod1.currency.usd}">
-                            <span @click="selectFilter('currency', 'usd', mod1)">$</span>
+                            <span @click="selectFilter('currency', 'usd', mod1)">&dollar;</span>
                         </label>
                         <label :class="{'filter--selected': mod1.currency.eur}">
-                            <span @click="selectFilter('currency', 'eur', mod1)">€</span>
+                            <span @click="selectFilter('currency', 'eur', mod1)">&euro;</span>
                         </label>
                     </div>
                     <div class="filters" @click.stop="expandHeader">

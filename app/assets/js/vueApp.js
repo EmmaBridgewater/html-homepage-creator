@@ -78,11 +78,9 @@ var htmlCreator = new Vue({
         selectFilter: function(filter, subfilter, item) {
             item[filter][subfilter] = !item[filter][subfilter]
         },
-        selectOutput(element) {
-            element.select()
-        },
         returnHTML: function() {
             this.outputExpanded = !this.outputExpanded
+            this.mod1.headerExpanded = !this.outputExpanded
         }
     }
 })
