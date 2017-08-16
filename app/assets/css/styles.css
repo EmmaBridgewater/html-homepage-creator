@@ -27,10 +27,17 @@ body {
     font-weight: normal;
     padding: 0.8em; }
   .container h1 {
+    position: relative;
+    width: 100%;
     margin: 0;
     background: slategrey;
     cursor: default;
     user-select: none; }
+    .container h1 i.material-icons {
+      position: absolute;
+      left: 20px;
+      top: 32%;
+      cursor: pointer; }
 
 .content-container {
   padding: 0 25px; }
