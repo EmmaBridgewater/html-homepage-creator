@@ -1,0 +1,11 @@
+.button-submit {
+    margin-top: 30px;
+    width: 100%;
+    background: $primary-color;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.1s all;
+    &:hover {
+        background: $primary-color-d;
+    }
+}

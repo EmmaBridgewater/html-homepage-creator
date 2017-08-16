@@ -1,9 +1,10 @@
-body {
+body, html {
   padding: 0;
   margin: 0;
   background: aliceblue;
   color: black;
-  font-family: "Gill Sans MT", sans-serif; }
+  font-family: "Gill Sans MT", sans-serif;
+  height: 100%; }
 
 * {
   box-sizing: border-box; }
@@ -32,12 +33,12 @@ body {
     margin: 0;
     background: slategrey;
     cursor: default;
+    cursor: pointer;
     user-select: none; }
     .container h1 i.material-icons {
       position: absolute;
       left: 20px;
-      top: 32%;
-      cursor: pointer; }
+      top: 32%; }
 
 .content-container {
   padding: 0 25px; }
@@ -49,7 +50,6 @@ body {
     user-select: none;
     cursor: default; }
   .content-container h2 {
-    border-top: 1px solid lightgrey;
     padding-top: 12px;
     margin-bottom: 0em;
     cursor: pointer; }
@@ -144,17 +144,17 @@ body {
   .button-submit:hover {
     background: #ad0728; }
 
-.output-container {
+.html-container {
   width: 100%;
   max-width: 100%;
   border: none;
   display: none;
   visibility: hidden;
-  min-height: 0px;
-  transition: min-height 0.5s; }
-  .output-container.output-container--expanded {
+  max-height: 0px;
+  transition: 0.5s; }
+  .html-container--expanded {
     display: block;
     visibility: visible;
-    min-height: 400px; }
+    max-height: 400px; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,36 @@
+.content-container {
+    padding: 0 25px;
+    h2,
+    h3 {
+        margin: 0.3em 0;
+        position: relative;
+        font-weight: normal;
+        user-select: none;
+        cursor: default;
+    }
+    h2 {
+        padding-top: 12px;
+        margin-bottom: 0em;
+        cursor: pointer;
+        + div {
+            height: 0;
+            width: 100%;
+            overflow: hidden;
+            transition: 0.2s;
+        }
+        > span.header-arrow {
+            float: left;
+            margin-right: 5px;
+            color: slategrey;
+            transition: 0.1s;
+        }
+    }
+    .header--expanded {
+        + div {
+            height: 520px;
+        }
+        > span.header-arrow {
+            transform: rotate(90deg);
+        }
+    }
+}

@@ -1,0 +1,14 @@
+.html-container {
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    display: none;
+    visibility: hidden;
+    max-height: 0px;
+    transition: 0.5s;
+    &--expanded {
+        display: block;
+        visibility: visible;
+        max-height: 400px;
+    }
+}
