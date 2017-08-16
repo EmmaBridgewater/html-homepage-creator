@@ -9,52 +9,51 @@
 
 <body>
 	<div class="container">
-		<h1>Homepage HTML Generator</h1>
+		<h1><i class="material-icons">get_app</i>Homepage HTML Generator</h1>
 		<div class="hcContentContainer">
-			<div class="content-container" v-for="(item, index) in mod1">
-				<h2 @click="expandHeader(item)" :class="{'header--expanded': item.headerExpanded}">
+			<div class="content-container">
+				<h2 @click="expandHeader(mod1)" :class="{'header--expanded': mod1.headerExpanded}">
 					Carousel<span class="header-arrow">►</span>
 					<div class="filters" @click.stop="expandHeader">
-						<label :class="{'filter--selected': item.currency.gbp}">
-							<span @click="selectFilter('currency', 'gbp', item)">£</span>
+						<label :class="{'filter--selected': mod1.currency.gbp}">
+							<span @click="selectFilter('currency', 'gbp', mod1)">£</span>
 						</label>
-						<label :class="{'filter--selected': item.currency.usd}">
-							<span @click="selectFilter('currency', 'usd', item)">$</span>
+						<label :class="{'filter--selected': mod1.currency.usd}">
+							<span @click="selectFilter('currency', 'usd', mod1)">$</span>
 						</label>
-						<label :class="{'filter--selected': item.currency.eur}">
-							<span @click="selectFilter('currency', 'eur', item)">€</span>
+						<label :class="{'filter--selected': mod1.currency.eur}">
+							<span @click="selectFilter('currency', 'eur', mod1)">€</span>
 						</label>
 					</div>
 					<div class="filters" @click.stop="expandHeader">
-						<label :class="{'filter--selected': item.collector.noncollector}">
-							<span @click="selectFilter('collector', 'noncollector', item)">G</span>
+						<label :class="{'filter--selected': mod1.collector.noncollector}">
+							<span @click="selectFilter('collector', 'noncollector', mod1)">G</span>
 						</label>
-						<label :class="{'filter--selected': item.collector.collector}">
-							<span @click="selectFilter('collector', 'collector', item)">C</span>
+						<label :class="{'filter--selected': mod1.collector.collector}">
+							<span @click="selectFilter('collector', 'collector', mod1)">C</span>
 						</label>
 					</div>
 				</h2>
 				<div>
-					<div v-for="(input, number) in mod1[index].content">
+					<div v-for="(input, number) in mod1.content">
 						<h3>Image {{number + 1}}</h3>
 						<form class="input-container">
 							<div class="input-wrapper">
-								<i class="material-icons">&#xE30C;</i>
+								<i class="material-icons">desktop_windows</i>
 								<input type="text" class="img-input" placeholder="Desktop Image (https://www... .jpg)" v-model="input.desktopImg">
 								<img class="img-output" :src="input.desktopImg" />
 							</div>
 							<div class="input-wrapper">
-								<i class="material-icons">&#xE32C;</i>
+								<i class="material-icons">smartphone</i>
 								<input type="text" class="img-input" placeholder="Mobile Image (https://www... .jpg)" v-model="input.mobileImg">
 								<img class="img-output" :src="input.mobileImg" />
 							</div>
 							<div class="input-wrapper">
-								<i class="material-icons">&#xE157;</i>
+								<i class="material-icons">link</i>
 								<input type="text" placeholder="Link (https://www...)" v-model="input.link">
-
 							</div>
 							<div class="input-wrapper">
-								<i class="material-icons">&#xE262;</i>
+								<i class="material-icons">text_fields</i>
 								<input type="text" placeholder="Alt Text" v-model="input.altText">
 							</div>
 						</form>
@@ -65,7 +64,7 @@
 		<div>
 			<input @click="returnHTML" type="button" class="button-submit" value="GIVE IT TO ME">
 		</div>
-		<textarea class="output-container" :class="{'output-container--expanded': outputExpanded}">{{output}}</textarea>
+		<textarea class="output-container" @click="selectOutput(this)" :class="{'output-container--expanded': outputExpanded}">{{output}}</textarea>
 	</div>
 
 
