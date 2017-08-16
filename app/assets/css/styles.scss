@@ -24,7 +24,6 @@ body {
 	overflow: hidden;
 	h1,
 	input[type="button"] {
-		margin: 0;
 		border: 0;
 		font-size: 1.5em;
 		text-align: center;
@@ -35,13 +34,14 @@ body {
 		padding: 0.8em;
 	}
 	h1 {
+		margin: 0;
 		background: slategrey;
 		cursor: default;
 		user-select: none;
 	}
 }
 
-.hcContentContainer {
+.content-container {
 	padding: 0 25px;
 	h2,
 	h3 {
@@ -62,37 +62,29 @@ body {
 			overflow: hidden;
 			transition: 0.2s;
 		}
-		> span.headerArrow {
+		> span.header-arrow {
 			float: left;
 			margin-right: 5px;
 			color: slategrey;
 			transition: 0.1s;
 		}
 	}
-	.headerExpanded {
+	.header--expanded {
 		+ div {
 			height: 520px;
 		}
-		> span.headerArrow {
+		> span.header-arrow {
 			transform: rotate(90deg);
 		}
 	}
 }
 
-.hcSectionContainer {
-	margin-top: 20px;
-	+ hr {
-		margin: 30px 0;
-		border: none;
-		border-top: medium double lightgrey;
-	}
-}
-
-.hcFilters {
+.filters {
 	margin-left: 10px;
 	display: inline-block;
 	float: right;
 	label {
+		display: inline;
 		height: 27px;
 		width: 27px;
 		line-height: 27px;
@@ -106,25 +98,22 @@ body {
 		cursor: pointer;
 		position: relative;
 		transition: 0.1s all;
+		& > span {
+			text-transform: uppercase;
+			font-size: 0.55em;
+			position: absolute;
+			width: 100%;
+			left: 0;
+		}
 	}
-	input[type="checkbox"] {
-		display: none;
-	}
-	input[type="checkbox"] + span {
-		text-transform: uppercase;
-		font-size: 0.55em;
-		position: absolute;
-		width: 100%;
-		left: 0;
-	}
-	.filterSelected {
+	.filter--selected {
 		background: $primary-color;
 	}
 }
 
-.hcInputs {
+.input-container {
 	margin-bottom: 10px;
-	.hcInputWrapper {
+	.input-wrapper {
 		position: relative;
 		height: 30px;
 		width: 100%;
@@ -145,7 +134,7 @@ body {
 			padding: 5px;
 			outline: none;
 			float: left;
-			&.blankInput {
+			&.input--blank {
 				background: $primary-color-t;
 			}
 			&:hover + .img-output {
@@ -167,7 +156,7 @@ body {
 	}
 }
 
-#hcSubmit {
+.button-submit {
 	margin-top: 30px;
 	width: 100%;
 	background: $primary-color;
@@ -179,7 +168,7 @@ body {
 	}
 }
 
-#htmlOutput {
+.output-container {
 	width: 100%;
 	max-width: 100%;
 	border: none;
@@ -187,7 +176,7 @@ body {
 	visibility: hidden;
 	min-height: 0px;
 	transition: min-height 0.5s;
-	&.outputExpanded {
+	&.output-container--expanded {
 		display: block;
 		visibility: visible;
 		min-height: 400px;

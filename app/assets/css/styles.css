@@ -18,7 +18,6 @@ body {
   overflow: hidden; }
   .container h1,
   .container input[type="button"] {
-    margin: 0;
     border: 0;
     font-size: 1.5em;
     text-align: center;
@@ -28,51 +27,46 @@ body {
     font-weight: normal;
     padding: 0.8em; }
   .container h1 {
+    margin: 0;
     background: slategrey;
     cursor: default;
     user-select: none; }
 
-.hcContentContainer {
+.content-container {
   padding: 0 25px; }
-  .hcContentContainer h2,
-  .hcContentContainer h3 {
+  .content-container h2,
+  .content-container h3 {
     margin: 0.3em 0;
     position: relative;
     font-weight: normal;
     user-select: none;
     cursor: default; }
-  .hcContentContainer h2 {
+  .content-container h2 {
     border-top: 1px solid lightgrey;
     padding-top: 12px;
     margin-bottom: 0em;
     cursor: pointer; }
-    .hcContentContainer h2 + div {
+    .content-container h2 + div {
       height: 0;
       width: 100%;
       overflow: hidden;
       transition: 0.2s; }
-    .hcContentContainer h2 > span.headerArrow {
+    .content-container h2 > span.header-arrow {
       float: left;
       margin-right: 5px;
       color: slategrey;
       transition: 0.1s; }
-  .hcContentContainer .headerExpanded + div {
+  .content-container .header--expanded + div {
     height: 520px; }
-  .hcContentContainer .headerExpanded > span.headerArrow {
+  .content-container .header--expanded > span.header-arrow {
     transform: rotate(90deg); }
 
-.hcSectionContainer {
-  margin-top: 20px; }
-  .hcSectionContainer + hr {
-    margin: 30px 0;
-    border: none;
-    border-top: medium double lightgrey; }
-
-.hcFilters {
+.filters {
   margin-left: 10px;
   display: inline-block;
   float: right; }
-  .hcFilters label {
+  .filters label {
+    display: inline;
     height: 27px;
     width: 27px;
     line-height: 27px;
@@ -86,25 +80,23 @@ body {
     cursor: pointer;
     position: relative;
     transition: 0.1s all; }
-  .hcFilters input[type="checkbox"] {
-    display: none; }
-  .hcFilters input[type="checkbox"] + span {
-    text-transform: uppercase;
-    font-size: 0.55em;
-    position: absolute;
-    width: 100%;
-    left: 0; }
-  .hcFilters .filterSelected {
+    .filters label > span {
+      text-transform: uppercase;
+      font-size: 0.55em;
+      position: absolute;
+      width: 100%;
+      left: 0; }
+  .filters .filter--selected {
     background: #ed143d; }
 
-.hcInputs {
+.input-container {
   margin-bottom: 10px; }
-  .hcInputs .hcInputWrapper {
+  .input-container .input-wrapper {
     position: relative;
     height: 30px;
     width: 100%;
     margin-bottom: 5px; }
-    .hcInputs .hcInputWrapper i {
+    .input-container .input-wrapper i {
       padding: 3px 0;
       width: 5%;
       height: 100%;
@@ -112,19 +104,19 @@ body {
       float: left;
       user-select: none;
       cursor: default; }
-    .hcInputs .hcInputWrapper input[type="text"] {
+    .input-container .input-wrapper input[type="text"] {
       width: 95%;
       height: 100%;
       border: 1px solid lightgrey;
       padding: 5px;
       outline: none;
       float: left; }
-      .hcInputs .hcInputWrapper input[type="text"].blankInput {
+      .input-container .input-wrapper input[type="text"].input--blank {
         background: rgba(237, 20, 61, 0.3); }
-      .hcInputs .hcInputWrapper input[type="text"]:hover + .img-output {
+      .input-container .input-wrapper input[type="text"]:hover + .img-output {
         opacity: 1;
         visibility: visible; }
-    .hcInputs .hcInputWrapper .img-output {
+    .input-container .input-wrapper .img-output {
       position: absolute;
       top: 100%;
       right: 0;
@@ -135,17 +127,17 @@ body {
       transition: 0.1s all;
       visibility: hidden; }
 
-#hcSubmit {
+.button-submit {
   margin-top: 30px;
   width: 100%;
   background: #ed143d;
   text-transform: uppercase;
   cursor: pointer;
   transition: 0.1s all; }
-  #hcSubmit:hover {
+  .button-submit:hover {
     background: #ad0728; }
 
-#htmlOutput {
+.output-container {
   width: 100%;
   max-width: 100%;
   border: none;
@@ -153,7 +145,7 @@ body {
   visibility: hidden;
   min-height: 0px;
   transition: min-height 0.5s; }
-  #htmlOutput.outputExpanded {
+  .output-container.output-container--expanded {
     display: block;
     visibility: visible;
     min-height: 400px; }
