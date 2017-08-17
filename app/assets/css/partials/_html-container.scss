@@ -4,11 +4,19 @@
     border: none;
     display: none;
     visibility: hidden;
-    max-height: 0px;
-    transition: 0.5s;
+    min-height: 0px;
+    &--input {
+        background: lightslategrey;
+        color: white;
+        border-top: 1px solid white;
+        border-bottom: 1px solid slategrey;
+        &::-webkit-input-placeholder {
+            color: #bbbbbb;
+        }
+    }
     &--expanded {
         display: block;
         visibility: visible;
-        max-height: 400px;
+        min-height: 400px;
     }
 }
