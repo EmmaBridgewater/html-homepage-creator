@@ -16,18 +16,17 @@
             height: 0;
             width: 100%;
             overflow: hidden;
-            transition: 0.2s;
         }
         > span.header-arrow {
             float: left;
             margin-right: 5px;
             color: slategrey;
-            transition: 0.1s;
         }
     }
     .header--expanded {
         + div {
-            height: 520px;
+            height: auto;
+            overflow: visible;
         }
         > span.header-arrow {
             transform: rotate(90deg);

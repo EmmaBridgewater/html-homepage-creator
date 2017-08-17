@@ -56,15 +56,14 @@ body, html {
     .content-container h2 + div {
       height: 0;
       width: 100%;
-      overflow: hidden;
-      transition: 0.2s; }
+      overflow: hidden; }
     .content-container h2 > span.header-arrow {
       float: left;
       margin-right: 5px;
-      color: slategrey;
-      transition: 0.1s; }
+      color: slategrey; }
   .content-container .header--expanded + div {
-    height: 520px; }
+    height: auto;
+    overflow: visible; }
   .content-container .header--expanded > span.header-arrow {
     transform: rotate(90deg); }
 
