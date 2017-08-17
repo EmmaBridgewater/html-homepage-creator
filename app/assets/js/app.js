@@ -1,12 +1,19 @@
 var htmlCreator = new Vue({
     el: ".container",
     data: {
-        mainStructure: "",
+        inputIcon: "get_app",
+        inputExpanded: false,
         outputExpanded: false,
+        input: "",
+        headerExpanded: true,
         mod1: {
-            headerExpanded: true,
-            currency: { gbp: true, eur: false, usd: false },
-            collector: { collector: true, noncollector: true },
+            category: {
+                gbp: true,
+                eur: false,
+                usd: false,
+                collector: true,
+                noncollector: true
+            },
             content: [
                 {
                     desktopImg:
@@ -16,7 +23,7 @@ var htmlCreator = new Vue({
                     link: "https://www.emmabridgewater.co.uk/icat/patcherries",
                     altText: "50% off Summer Cherries"
                 },
-                { desktopImg: "", mobileImg: "", link: "", altText: "" },
+                { desktopImg: "xx", mobileImg: "", link: "", altText: "" },
                 { desktopImg: "", mobileImg: "", link: "", altText: "" }
             ]
         }
@@ -25,14 +32,14 @@ var htmlCreator = new Vue({
         output: function() {
             var text = ""
             var collectors = [
-                this.mod1.collector.collector ? "hp-collector " : "",
-                this.mod1.collector.noncollector ? "hp-noncollector " : ""
+                this.mod1.category.collector ? "hp-collector " : "",
+                this.mod1.category.noncollector ? "hp-noncollector " : ""
             ].join("")
 
             var currencies = [
-                this.mod1.currency.gbp ? "hp-gbp " : "",
-                this.mod1.currency.eur ? "hp-eur " : "",
-                this.mod1.currency.usd ? "hp-usd " : ""
+                this.mod1.category.gbp ? "hp-gbp " : "",
+                this.mod1.category.eur ? "hp-eur " : "",
+                this.mod1.category.usd ? "hp-usd " : ""
             ].join("")
 
             text +=
@@ -72,15 +79,85 @@ var htmlCreator = new Vue({
         }
     },
     methods: {
-        expandHeader: function(element) {
-            element.headerExpanded = !element.headerExpanded
+        inputHTML: function(section) {
+            this.inputExpanded = !this.inputExpanded
+            this.headerExpanded = !this.inputExpanded
+            this.outputExpanded = false
+            if (this.inputExpanded) {
+                this.inputIcon = "done"
+            } else {
+                this.inputIcon = "get_app"
+                this.processInputHTML(section)
+            }
         },
-        selectFilter: function(filter, subfilter, item) {
-            item[filter][subfilter] = !item[filter][subfilter]
+        processInputHTML: function(section) {
+            var inputData = this.input
+            if (inputData.search(/hp-/) > 0) {
+                // category handling
+                var categories = inputData
+                    .match(/hp-.*\b/g)
+                    .join(" ")
+                    .replace(/hp-/g, "")
+                    .split(" ")
+                    .filter(function(e) {
+                        return e !== "slick"
+                    })
+                // reset categories...
+                Object.keys(section.category).forEach(function(key) {
+                    section.category[key] = false
+                })
+                // ...then add in categories from input
+                categories.forEach(function(cat) {
+                    section.category[cat] = true
+                })
+
+                // image handling
+                var images = inputData
+                    .match(/(?:srcset=').*(?='>)/g)
+                    .map(function(e) {
+                        return e.replace(/srcset='/, "")
+                    })
+                // replace image inputs
+                var counter = 0
+                section.content.forEach(function(slide){
+                    slide.desktopImg = images[counter+1]
+                    slide.mobileImg = images[counter]
+                    counter += 2
+                })
+
+                // link handling
+                var links = inputData
+                    .match(/(?:a href=').*(?='>)/g)
+                    .map(function(e) {
+                        return e.replace(/a href='/, "")
+                    })
+
+                section.content.forEach(function(slide, index){
+                    slide.link = links[index]
+                })
+
+                // alt text handling
+                var alt = inputData
+                    .match(/(?:alt=').*(?='>)/g)
+                    .map(function(e) {
+                        return e.replace(/alt='/, "")
+                    })
+
+                section.content.forEach(function(slide, index){
+                    slide.altText = alt[index]
+                })
+            }
         },
-        returnHTML: function() {
+        expandHeader: function() {
+            this.headerExpanded = !this.headerExpanded
+        },
+        selectFilter: function(filter, item) {
+            item.category[filter] = !item.category[filter]
+        },
+        outputHTML: function() {
             this.outputExpanded = !this.outputExpanded
-            this.mod1.headerExpanded = !this.outputExpanded
+            this.headerExpanded = !this.outputExpanded
+            this.inputExpanded ? this.inputHTML() : null
         }
     }
 })
