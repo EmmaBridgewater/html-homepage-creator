@@ -1,0 +1,10 @@
+.button-submit {
+	margin-top: 30px;
+	width: 100%;
+	background: #ed143d;
+	text-transform: uppercase;
+	cursor: pointer;
+	&:hover {
+		background: #ad0728;
+	}
+}

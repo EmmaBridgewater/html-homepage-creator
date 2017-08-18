@@ -1,0 +1,30 @@
+.filters {
+    margin-left: 10px;
+    display: inline-block;
+    float: right;
+    label {
+        display: inline;
+        height: 27px;
+        width: 27px;
+        line-height: 27px;
+        margin: 0 2px;
+        text-align: center;
+        color: snow;
+        background: lightgrey;
+        border-radius: 50%;
+        display: inline-block;
+        user-select: none;
+        cursor: pointer;
+        position: relative;
+        & > span {
+            text-transform: uppercase;
+            font-size: 0.55em;
+            position: absolute;
+            width: 100%;
+            left: 0;
+        }
+    }
+    .filter--selected {
+        background: $primary-color;
+    }
+}
