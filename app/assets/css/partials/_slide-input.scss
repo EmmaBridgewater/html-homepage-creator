@@ -1,0 +1,59 @@
+.slide-input {
+    &__container {
+        margin-bottom: 10px;
+    }
+    &__wrapper {
+        position: relative;
+        height: 30px;
+        width: 100%;
+        margin-bottom: 5px;
+        i {
+            padding: 3px 0;
+            width: 5%;
+            height: 100%;
+            text-align: left;
+            float: left;
+            user-select: none;
+            cursor: default;
+        }
+        input[type="text"] {
+            width: 95%;
+            height: 100%;
+            border: 1px solid lightgrey;
+            padding: 5px;
+            outline: none;
+            float: left;
+        }
+    }
+    &__show-preview {
+        & i {
+            color: black;
+            cursor: pointer;
+        }
+        &:hover > .slide-input__preview {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    &__preview {
+        position: absolute;
+        top: 0;
+        left: 5%;
+        height: auto;
+        z-index: 100;
+        opacity: 0;
+        transition: 0.1s all;
+        visibility: hidden;
+        &__img {
+            max-width: 50%;
+            height: auto;
+        }
+        &__link {
+            bottom: 0;
+            width: 95%;
+            text-align: left;
+            background: white;
+            padding: 5px;
+        }
+    }
+}
