@@ -15,9 +15,10 @@
         </h1>
         <textarea class="html-container html-container--input" placeholder="Enter the current homepage HTML and click the header" @focus="$event.target.select()" :class="{'html-container--expanded': inputExpanded}" v-model="input"></textarea>
         <div class="content-container">
-            <h2 @click="expandHeader" :class="{'header--expanded': headerExpanded}">
-                Carousel<span class="header-arrow">&#x25ba;</span>
-                <div class="filters" @click.stop="expandHeader">
+            <h2 :class="{'header--expanded': headerExpanded}">
+                Carousel
+                <span class="header-arrow" @click="expandHeader">&#x25ba;</span>
+                <div class="filters">
                     <label :class="{'filter--selected': mod1.category.gbp}">
                         <span @click="selectFilter('gbp', mod1)">&pound;</span>
                     </label>
@@ -28,7 +29,7 @@
                         <span @click="selectFilter('eur', mod1)">&euro;</span>
                     </label>
                 </div>
-                <div class="filters" @click.stop="expandHeader">
+                <div class="filters">
                     <label :class="{'filter--selected': mod1.category.noncollector}">
                         <span @click="selectFilter('noncollector', mod1)">G</span>
                     </label>
@@ -40,22 +41,31 @@
             <div>
                 <div v-for="(input, number) in mod1.content">
                     <h3>Image {{number + 1}}</h3>
-                    <form class="input-container">
-                        <div class="input-wrapper">
-                            <i class="material-icons">desktop_windows</i>
-                            <input type="text" class="img-input" placeholder="Desktop Image (https://www... .jpg)" v-model="input.desktopImg">
-                            <img class="img-output" :src="input.desktopImg" />
+                    <form class="slide-input slide-input__container">
+                        <div class="slide-input__wrapper">
+                            <a :href="input.desktopImg" target="_blank" class="slide-input__show-preview">
+                                <i class="material-icons">desktop_windows</i>
+                                <img class="slide-input__preview slide-input__preview__img" :src="input.desktopImg" />
+                            </a>
+                            <input type="text" placeholder="Desktop Image (https://www... .jpg)" v-model="input.desktopImg">
                         </div>
-                        <div class="input-wrapper">
-                            <i class="material-icons">smartphone</i>
-                            <input type="text" class="img-input" placeholder="Mobile Image (https://www... .jpg)" v-model="input.mobileImg">
-                            <img class="img-output" :src="input.mobileImg" />
+                        <div class="slide-input__wrapper">
+                            <a :href="input.mobileImg"  class="slide-input__show-preview" target="_blank">
+                                <i class="material-icons">smartphone</i>
+                                <img class="slide-input__preview slide-input__preview__img" :src="input.mobileImg" />
+                            </a>
+                            <input type="text" placeholder="Mobile Image (https://www... .jpg)" v-model="input.mobileImg">
                         </div>
-                        <div class="input-wrapper">
-                            <i class="material-icons">link</i>
+                        <div class="slide-input__wrapper">
+                            <div class="slide-input__show-preview">
+                                <a :href="input.link" target="_blank">
+                                    <i class="material-icons">link</i>
+                                    <a class="slide-input__preview slide-input__preview__link" :href="input.link" target="_blank">{{input.link}}</a>
+                                </a>
+                            </div>
                             <input type="text" placeholder="Link (https://www...)" v-model="input.link">
                         </div>
-                        <div class="input-wrapper">
+                        <div class="slide-input__wrapper">
                             <i class="material-icons">text_fields</i>
                             <input type="text" placeholder="Alt Text" v-model="input.altText">
                         </div>
