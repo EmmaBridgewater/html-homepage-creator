@@ -91,7 +91,7 @@ var htmlCreator = new Vue({
             }
         },
         processInputHTML: function(section) {
-            var inputData = this.input
+            var inputData = this.input.replace(/"/g, "'")
             if (inputData.search(/hp-/) > 0) {
                 // category handling
                 var categories = inputData
@@ -151,8 +151,8 @@ var htmlCreator = new Vue({
         expandHeader: function() {
             this.headerExpanded = !this.headerExpanded
         },
-        selectFilter: function(filter, item) {
-            item.category[filter] = !item.category[filter]
+        selectFilter: function(filter, module) {
+            module.category[filter] = !module.category[filter]
         },
         outputHTML: function() {
             this.outputExpanded = !this.outputExpanded
