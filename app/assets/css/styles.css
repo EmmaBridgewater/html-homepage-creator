@@ -51,13 +51,13 @@ body, html {
     cursor: default; }
   .content-container h2 {
     padding-top: 12px;
-    margin-bottom: 0em;
-    cursor: pointer; }
+    margin-bottom: 0em; }
     .content-container h2 + div {
       height: 0;
       width: 100%;
       overflow: hidden; }
     .content-container h2 > span.header-arrow {
+      cursor: pointer;
       float: left;
       margin-right: 5px;
       color: slategrey; }
@@ -84,8 +84,7 @@ body, html {
     display: inline-block;
     user-select: none;
     cursor: pointer;
-    position: relative;
-    transition: 0.1s all; }
+    position: relative; }
     .filters label > span {
       text-transform: uppercase;
       font-size: 0.55em;
@@ -95,51 +94,59 @@ body, html {
   .filters .filter--selected {
     background: #ed143d; }
 
-.input-container {
+.slide-input__container {
   margin-bottom: 10px; }
-  .input-container .input-wrapper {
-    position: relative;
-    height: 30px;
-    width: 100%;
-    margin-bottom: 5px; }
-    .input-container .input-wrapper i {
-      padding: 3px 0;
-      width: 5%;
-      height: 100%;
-      text-align: left;
-      float: left;
-      user-select: none;
-      cursor: default; }
-    .input-container .input-wrapper input[type="text"] {
-      width: 95%;
-      height: 100%;
-      border: 1px solid lightgrey;
-      padding: 5px;
-      outline: none;
-      float: left; }
-      .input-container .input-wrapper input[type="text"].input--blank {
-        background: rgba(237, 20, 61, 0.3); }
-      .input-container .input-wrapper input[type="text"]:hover + .img-output {
-        opacity: 1;
-        visibility: visible; }
-    .input-container .input-wrapper .img-output {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      max-width: 50%;
-      height: auto;
-      z-index: 100;
-      opacity: 0;
-      transition: 0.1s all;
-      visibility: hidden; }
+.slide-input__wrapper {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  margin-bottom: 5px; }
+  .slide-input__wrapper i {
+    padding: 3px 0;
+    width: 5%;
+    height: 100%;
+    text-align: left;
+    float: left;
+    user-select: none;
+    cursor: default; }
+  .slide-input__wrapper input[type="text"] {
+    width: 95%;
+    height: 100%;
+    border: 1px solid lightgrey;
+    padding: 5px;
+    outline: none;
+    float: left; }
+.slide-input__show-preview i {
+  color: black;
+  cursor: pointer; }
+.slide-input__show-preview:hover > .slide-input__preview {
+  opacity: 1;
+  visibility: visible; }
+.slide-input__preview {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  height: auto;
+  z-index: 100;
+  opacity: 0;
+  transition: 0.1s all;
+  visibility: hidden; }
+  .slide-input__preview__img {
+    max-width: 50%;
+    height: auto; }
+  .slide-input__preview__link {
+    bottom: 0;
+    width: 95%;
+    text-align: left;
+    background: white;
+    padding: 5px; }
 
 .button-submit {
   margin-top: 30px;
   width: 100%;
   background: #ed143d;
   text-transform: uppercase;
-  cursor: pointer;
-  transition: 0.1s all; }
+  cursor: pointer; }
   .button-submit:hover {
     background: #ad0728; }
 
