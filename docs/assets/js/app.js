@@ -24,7 +24,7 @@ var htmlCreator = new Vue({
                     link: "https://www.emmabridgewater.co.uk/icat/patcherries",
                     altText: "50% off Summer Cherries"
                 },
-                { desktopImg: "xx", mobileImg: "", link: "", altText: "" },
+                { desktopImg: "", mobileImg: "", link: "", altText: "" },
                 { desktopImg: "", mobileImg: "", link: "", altText: "" }
             ]
         },
