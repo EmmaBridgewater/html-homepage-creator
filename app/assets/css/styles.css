@@ -17,55 +17,68 @@ body, html {
   border-radius: 10px;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
   overflow: hidden; }
-  .container h1,
-  .container input[type="button"] {
-    border: 0;
-    font-size: 1.5em;
-    text-align: center;
-    color: snow;
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    font-weight: normal;
-    padding: 0.8em; }
-  .container h1 {
-    position: relative;
-    width: 100%;
-    margin: 0;
-    background: slategrey;
-    cursor: default;
-    cursor: pointer;
-    user-select: none; }
-    .container h1 i.material-icons {
-      position: absolute;
-      left: 20px;
-      top: 32%; }
 
 .content-container {
   padding: 0 25px; }
-  .content-container h2,
-  .content-container h3 {
-    margin: 0.3em 0;
-    position: relative;
-    font-weight: normal;
-    user-select: none;
-    cursor: default; }
-  .content-container h2 {
-    padding-top: 12px;
-    margin-bottom: 0em; }
-    .content-container h2 + div {
-      height: 0;
-      width: 100%;
-      overflow: hidden; }
-    .content-container h2 > span.header-arrow {
-      cursor: pointer;
-      float: left;
-      margin-right: 5px;
-      color: slategrey; }
-  .content-container .header--expanded + div {
-    height: auto;
-    overflow: visible; }
-  .content-container .header--expanded > span.header-arrow {
-    transform: rotate(90deg); }
+
+.header-module,
+input[type="button"] {
+  border: 0;
+  font-size: 1.5em;
+  text-align: center;
+  color: snow;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-weight: normal;
+  padding: 0.8em; }
+
+.header-module {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: slategray;
+  cursor: default;
+  cursor: pointer;
+  user-select: none; }
+  .header-module div {
+    display: inline-block;
+    width: 50%;
+    padding: 0.8em;
+    float: left; }
+    .header-module div:hover {
+      background: #566a7e; }
+  .header-module::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .header-module--active {
+    background: #3e5469; }
+
+h2,
+h3 {
+  margin: 0.3em 0;
+  position: relative;
+  font-weight: normal;
+  user-select: none;
+  cursor: default; }
+
+h2 {
+  padding-top: 12px;
+  margin-bottom: 0em; }
+  h2 span {
+    cursor: pointer; }
+  h2 + div {
+    height: 0;
+    width: 100%;
+    overflow: hidden; }
+  h2 i.material-icons {
+    padding: 3px;
+    cursor: pointer; }
+
+.header--expanded + div {
+  height: auto;
+  overflow: visible; }
 
 .filters {
   margin-left: 10px;
@@ -140,6 +153,9 @@ body, html {
     text-align: left;
     background: white;
     padding: 5px; }
+    .slide-input__preview__link i {
+      font-size: 18px;
+      padding: 2px 0; }
 
 .button-submit {
   margin-top: 30px;
@@ -158,12 +174,9 @@ body, html {
   visibility: hidden;
   min-height: 0px; }
   .html-container--input {
-    background: lightslategrey;
-    color: white;
+    background: rgba(112, 128, 144, 0.3);
     border-top: 1px solid white;
-    border-bottom: 1px solid slategrey; }
-    .html-container--input::-webkit-input-placeholder {
-      color: #bbbbbb; }
+    border-bottom: 1px solid slategray; }
   .html-container--expanded {
     display: block;
     visibility: visible;

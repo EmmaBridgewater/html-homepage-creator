@@ -1,16 +1,17 @@
 var htmlCreator = new Vue({
     el: ".container",
     data: {
-        inputIcon: "get_app",
         inputExpanded: false,
         outputExpanded: false,
         input: "",
+        currentMod: "mod1",
         headerExpanded: true,
         mod1: {
+            header: "Carousel",
             category: {
                 gbp: true,
-                eur: false,
-                usd: false,
+                eur: true,
+                usd: true,
                 collector: true,
                 noncollector: true
             },
@@ -26,31 +27,58 @@ var htmlCreator = new Vue({
                 { desktopImg: "xx", mobileImg: "", link: "", altText: "" },
                 { desktopImg: "", mobileImg: "", link: "", altText: "" }
             ]
+        },
+        mod2: {
+            header: "Heroes",
+            category: {
+                gbp: true,
+                eur: true,
+                usd: true,
+                collector: true,
+                noncollector: true
+            },
+            content: [
+                { desktopImg: "", mobileImg: "", link: "", altText: "" },
+                { desktopImg: "", mobileImg: "", link: "", altText: "" },
+                { desktopImg: "", mobileImg: "", link: "", altText: "" }
+            ]
         }
     },
     computed: {
+        moduleContent: function() {
+            return this[this.currentMod]
+        },
+        inputIcon: function() {
+            if (this.inputExpanded) {
+                return "done"
+            } else {
+                return "vertical_align_bottom"
+            }
+        },
         output: function() {
             var text = ""
             var collectors = [
-                this.mod1.category.collector ? "hp-collector " : "",
-                this.mod1.category.noncollector ? "hp-noncollector " : ""
-            ].join("")
+                this[this.currentMod].category.collector ? "hp-collector " : "",
+                this[this.currentMod].category.noncollector ? "hp-noncollector " : ""
+            ]
+                .join("")
+                .trim()
 
             var currencies = [
-                this.mod1.category.gbp ? "hp-gbp " : "",
-                this.mod1.category.eur ? "hp-eur " : "",
-                this.mod1.category.usd ? "hp-usd " : ""
+                this[this.currentMod].category.gbp ? "hp-gbp " : "",
+                this[this.currentMod].category.eur ? "hp-eur " : "",
+                this[this.currentMod].category.usd ? "hp-usd " : ""
             ].join("")
 
             text +=
                 "<div class='" +
-                collectors.trim() +
+                collectors +
                 "'>" +
                 "\n  <div class='" +
                 currencies +
                 "hp-slick'>"
 
-            this.mod1.content.forEach(function(details) {
+            this[this.currentMod].content.forEach(function(details) {
                 text +=
                     "\n    <div>" +
                     "\n      <a href='" +
@@ -79,18 +107,16 @@ var htmlCreator = new Vue({
         }
     },
     methods: {
-        inputHTML: function(section) {
+        inputHTML: function() {
             this.inputExpanded = !this.inputExpanded
             this.headerExpanded = !this.inputExpanded
             this.outputExpanded = false
-            if (this.inputExpanded) {
-                this.inputIcon = "done"
-            } else {
-                this.inputIcon = "get_app"
-                this.processInputHTML(section)
+            if (!this.inputExpanded) {
+                this.processInputHTML(this[this.currentMod])
             }
         },
-        processInputHTML: function(section) {
+        processInputHTML: function() {
+            var currentModule = this[this.currentMod]
             var inputData = this.input.replace(/"/g, "'")
             if (inputData.search(/hp-/) > 0) {
                 // category handling
@@ -103,12 +129,12 @@ var htmlCreator = new Vue({
                         return e !== "slick"
                     })
                 // reset categories...
-                Object.keys(section.category).forEach(function(key) {
-                    section.category[key] = false
+                Object.keys(currentModule.category).forEach(function(key) {
+                    currentModule.category[key] = false
                 })
                 // ...then add in categories from input
                 categories.forEach(function(cat) {
-                    section.category[cat] = true
+                    currentModule.category[cat] = true
                 })
 
                 // image handling
@@ -119,8 +145,8 @@ var htmlCreator = new Vue({
                     })
                 // replace image inputs
                 var counter = 0
-                section.content.forEach(function(slide){
-                    slide.desktopImg = images[counter+1]
+                currentModule.content.forEach(function(slide) {
+                    slide.desktopImg = images[counter + 1]
                     slide.mobileImg = images[counter]
                     counter += 2
                 })
@@ -132,7 +158,7 @@ var htmlCreator = new Vue({
                         return e.replace(/a href='/, "")
                     })
 
-                section.content.forEach(function(slide, index){
+                currentModule.content.forEach(function(slide, index) {
                     slide.link = links[index]
                 })
 
@@ -143,16 +169,19 @@ var htmlCreator = new Vue({
                         return e.replace(/alt='/, "")
                     })
 
-                section.content.forEach(function(slide, index){
+                currentModule.content.forEach(function(slide, index) {
                     slide.altText = alt[index]
                 })
             }
+        },
+        setCurrentMod: function(mod) {
+            this.currentMod = mod
         },
         expandHeader: function() {
             this.headerExpanded = !this.headerExpanded
         },
         selectFilter: function(filter, module) {
-            module.category[filter] = !module.category[filter]
+            this[this.currentMod].category[filter] = !this[this.currentMod].category[filter]
         },
         outputHTML: function() {
             this.outputExpanded = !this.outputExpanded

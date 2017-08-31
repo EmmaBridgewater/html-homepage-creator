@@ -2,6 +2,7 @@
     &__container {
         margin-bottom: 10px;
     }
+
     &__wrapper {
         position: relative;
         height: 30px;
@@ -25,8 +26,9 @@
             float: left;
         }
     }
+
     &__show-preview {
-        & i {
+        i {
             color: black;
             cursor: pointer;
         }
@@ -35,6 +37,7 @@
             visibility: visible;
         }
     }
+
     &__preview {
         position: absolute;
         top: 0;
@@ -54,6 +57,10 @@
             text-align: left;
             background: white;
             padding: 5px;
+            & i {
+                font-size: 18px;
+                padding: 2px 0;
+            }
         }
     }
 }
