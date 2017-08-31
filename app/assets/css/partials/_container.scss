@@ -6,29 +6,8 @@
     border-radius: 10px;
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    h1,
-    input[type="button"] {
-        border: 0;
-        font-size: 1.5em;
-        text-align: center;
-        color: snow;
-        text-transform: uppercase;
-        letter-spacing: 6px;
-        font-weight: normal;
-        padding: 0.8em;
-    }
-    h1 {
-        position: relative;
-        width: 100%;
-        margin: 0;
-        background: slategrey;
-        cursor: default;
-        cursor: pointer;
-        user-select: none;
-        i.material-icons {
-            position: absolute;
-            left: 20px;
-            top: 32%;
-        }
-    }
+}
+
+.content-container {
+    padding: 0 25px;
 }
