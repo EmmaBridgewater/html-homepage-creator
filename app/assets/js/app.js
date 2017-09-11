@@ -80,8 +80,6 @@ var htmlCreator = new Vue({
                 currencies +
                 "hp-slick'>"
 
-            console.log(this.currentMod)
-
             if (this.currentMod === "mod1") {
                 this[this.currentMod].content.forEach(function(details) {
                     text +=
