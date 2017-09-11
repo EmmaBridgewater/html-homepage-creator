@@ -178,6 +178,7 @@ h2 {
     border-top: 1px solid white;
     border-bottom: 1px solid slategray; }
   .html-container--expanded {
+    font-family: monospace;
     display: block;
     visibility: visible;
     min-height: 400px; }

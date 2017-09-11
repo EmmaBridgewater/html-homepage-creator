@@ -11,6 +11,7 @@
         border-bottom: 1px solid $secondary-color;
     }
     &--expanded {
+        font-family: monospace;
         display: block;
         visibility: visible;
         min-height: 400px;
