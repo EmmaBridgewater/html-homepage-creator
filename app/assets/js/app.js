@@ -38,9 +38,9 @@ var htmlCreator = new Vue({
                 noncollector: true
             },
             content: [
-                { desktopImg: "", mobileImg: "", link: "", altText: "" },
-                { desktopImg: "", mobileImg: "", link: "", altText: "" },
-                { desktopImg: "", mobileImg: "", link: "", altText: "" }
+                { img: "", id: "mod2Left", link: "", altText: "" },
+                { img: "", id: "mod2Center", link: "", altText: "" },
+                { img: "", id: "mod2Right", link: "", altText: "" }
             ]
         }
     },
@@ -59,7 +59,9 @@ var htmlCreator = new Vue({
             var text = ""
             var collectors = [
                 this[this.currentMod].category.collector ? "hp-collector " : "",
-                this[this.currentMod].category.noncollector ? "hp-noncollector " : ""
+                this[this.currentMod].category.noncollector
+                    ? "hp-noncollector "
+                    : ""
             ]
                 .join("")
                 .trim()
@@ -78,28 +80,49 @@ var htmlCreator = new Vue({
                 currencies +
                 "hp-slick'>"
 
-            this[this.currentMod].content.forEach(function(details) {
-                text +=
-                    "\n    <div>" +
-                    "\n      <a href='" +
-                    details.link +
-                    "'>" +
-                    "\n        <picture>" +
-                    "\n          <source media='(max-width: 600px)' srcset='" +
-                    details.mobileImg +
-                    "'>" +
-                    "\n          <source media='(min-width: 600px)' srcset='" +
-                    details.desktopImg +
-                    "'>" +
-                    "\n          <img src='" +
-                    details.desktopImg +
-                    "' alt='" +
-                    details.altText +
-                    "'>" +
-                    "\n        </picture>" +
-                    "\n      </a>" +
-                    "\n    </div>"
-            })
+            console.log(this.currentMod)
+
+            if (this.currentMod === "mod1") {
+                this[this.currentMod].content.forEach(function(details) {
+                    text +=
+                        "\n    <div>" +
+                        "\n      <a href='" +
+                        details.link +
+                        "'>" +
+                        "\n        <picture>" +
+                        "\n          <source media='(max-width: 600px)' srcset='" +
+                        details.mobileImg +
+                        "'>" +
+                        "\n          <source media='(min-width: 600px)' srcset='" +
+                        details.desktopImg +
+                        "'>" +
+                        "\n          <img src='" +
+                        details.desktopImg +
+                        "' alt='" +
+                        details.altText +
+                        "'>" +
+                        "\n        </picture>" +
+                        "\n      </a>" +
+                        "\n    </div>"
+                })
+            } else {
+                this[this.currentMod].content.forEach(function(details) {
+                    text +=
+                        "\n    <div>" +
+                        "\n      <a href='" +
+                        details.link +
+                        "'>" +
+                        "\n        <img id='" +
+                        details.id +
+                        "' src='" +
+                        details.img +
+                        "' alt='" +
+                        details.altText +
+                        "'>" +
+                        "\n      </a>" +
+                        "\n    </div>"
+                })
+            }
 
             text += "\n  </div>" + "\n</div>\n"
 
@@ -138,18 +161,29 @@ var htmlCreator = new Vue({
                 })
 
                 // image handling
-                var images = inputData
-                    .match(/(?:srcset=').*(?='>)/g)
-                    .map(function(e) {
-                        return e.replace(/srcset='/, "")
+                if (currentModule === "mod1") {
+                    var images = inputData
+                        .match(/(?:srcset=').*(?='>)/g)
+                        .map(function(e) {
+                            return e.replace(/srcset='/, "")
+                        })
+                    // replace image inputs
+                    var counter = 0
+                    currentModule.content.forEach(function(slide) {
+                        slide.desktopImg = images[counter + 1]
+                        slide.mobileImg = images[counter]
+                        counter += 2
                     })
-                // replace image inputs
-                var counter = 0
-                currentModule.content.forEach(function(slide) {
-                    slide.desktopImg = images[counter + 1]
-                    slide.mobileImg = images[counter]
-                    counter += 2
-                })
+                } else {
+                    var images = inputData
+                        .match(/(?:src=').*(?=' alt=)/g)
+                        .map(function(e) {
+                            return e.replace(/src='/, "")
+                        })
+                    currentModule.content.forEach(function(slide, index) {
+                        slide.img = images[index]
+                    })
+                }
 
                 // link handling
                 var links = inputData
@@ -157,7 +191,6 @@ var htmlCreator = new Vue({
                     .map(function(e) {
                         return e.replace(/a href='/, "")
                     })
-
                 currentModule.content.forEach(function(slide, index) {
                     slide.link = links[index]
                 })
@@ -181,7 +214,8 @@ var htmlCreator = new Vue({
             this.headerExpanded = !this.headerExpanded
         },
         selectFilter: function(filter, module) {
-            this[this.currentMod].category[filter] = !this[this.currentMod].category[filter]
+            this[this.currentMod].category[filter] = !this[this.currentMod]
+                .category[filter]
         },
         outputHTML: function() {
             this.outputExpanded = !this.outputExpanded
