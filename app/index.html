@@ -27,11 +27,11 @@
                     <label :class="{'filter--selected': moduleContent.category.gbp}">
                         <span @click="selectFilter('gbp')">&pound;</span>
                     </label>
-                    <label :class="{'filter--selected': moduleContent.category.usd}">
-                        <span @click="selectFilter('usd')">&dollar;</span>
-                    </label>
                     <label :class="{'filter--selected': moduleContent.category.eur}">
                         <span @click="selectFilter('eur')">&euro;</span>
+                    </label>
+                    <label :class="{'filter--selected': moduleContent.category.usd}">
+                        <span @click="selectFilter('usd')">&dollar;</span>
                     </label>
                 </div>
                 <div class="filters">
@@ -51,14 +51,14 @@
                         <!-- mod1 images -->
                         <template v-if="currentMod === 'mod1'">
                             <div class="slide-input__wrapper">
-                                <a :href="input.desktopImg" target="_blank" class="slide-input__show-preview">
+                                <a tabindex="-1":href="input.desktopImg" target="_blank" class="slide-input__show-preview">
                                     <i class="material-icons">desktop_windows</i>
                                     <img class="slide-input__preview slide-input__preview__img" :src="input.desktopImg" />
                                 </a>
                                 <input type="text" placeholder="Desktop Image (https://www... .jpg)" v-model="input.desktopImg">
                             </div>
                             <div class="slide-input__wrapper">
-                                <a :href="input.mobileImg"  class="slide-input__show-preview" target="_blank">
+                                <a tabindex="-1":href="input.mobileImg"  class="slide-input__show-preview" target="_blank">
                                     <i class="material-icons">smartphone</i>
                                     <img class="slide-input__preview slide-input__preview__img" :src="input.mobileImg" />
                                 </a>
@@ -69,7 +69,7 @@
                         <!-- mod2 images -->
                         <template v-else>
                             <div class="slide-input__wrapper">
-                                <a :href="input.img"  class="slide-input__show-preview" target="_blank">
+                                <a tabindex="-1":href="input.img"  class="slide-input__show-preview" target="_blank">
                                     <i class="material-icons">image</i>
                                     <img class="slide-input__preview slide-input__preview__img" :src="input.img" />
                                 </a>
@@ -80,9 +80,9 @@
                         <!-- link -->
                         <div class="slide-input__wrapper">
                             <div class="slide-input__show-preview">
-                                <a :href="input.link" target="_blank">
+                                <a tabindex="-1":href="input.link" target="_blank">
                                     <i class="material-icons">link</i>
-                                    <a class="slide-input__preview slide-input__preview__link" :href="input.link" target="_blank">{{input.link}} <i class="material-icons md-18">launch</i></a>
+                                    <a tabindex="-1"class="slide-input__preview slide-input__preview__link" :href="input.link" target="_blank">{{input.link}} <i class="material-icons md-18">launch</i></a>
                                 </a>
                             </div>
                             <input type="text" placeholder="Link (https://www...)" v-model="input.link">
@@ -101,7 +101,7 @@
         <div>
             <input @click="outputHTML" type="button" class="button-submit" value="GIVE ME THE CODE">
         </div>
-        
+
         <textarea class="html-container"
         readonly
         @focus="$event.target.select()" 
